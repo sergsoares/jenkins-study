@@ -2,10 +2,10 @@
 - name: Configure Jenkins Server.
   hosts: server
   sudo: True
+  pre_tasks:
+    - name: Update Server
+      raw: sudo apt-get update
   
-#   tasks:
-#     - name: Update server
-#       raw: sudo apt-get update
-    
   roles: 
-    - geerlingguy.jenkins
+    - geerlingguy.jenkins 
+    - mrlesmithjr.netdata

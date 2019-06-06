@@ -1,0 +1,11 @@
+---
+- name: Configure Jenkins Server.
+  hosts: server
+  sudo: True
+  
+#   tasks:
+#     - name: Update server
+#       raw: sudo apt-get update
+    
+  roles: 
+    - geerlingguy.jenkins

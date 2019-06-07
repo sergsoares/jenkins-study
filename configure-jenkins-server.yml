@@ -6,6 +6,19 @@
     - name: Update Server
       raw: sudo apt-get update
   
-  roles: 
+  roles:
+    - geerlingguy.docker 
     - geerlingguy.jenkins 
     - mrlesmithjr.netdata
+    
+  tasks:
+    - name: Ensure group docker exists
+      group:
+        name: docker
+        state: present
+      
+    - name: Ensure jenkins users are added to the docker group.
+      user:
+        name: jenkins 
+        groups: docker
+        append: true

@@ -9,6 +9,11 @@ pipeline {
         CI = 'true' 
     }
     stages {
+        stage('clone') {
+            steps {
+                git 'https://github.com/jenkins-docs/simple-node-js-react-npm-app'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'npm install'

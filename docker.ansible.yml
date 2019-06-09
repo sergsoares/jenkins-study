@@ -1,0 +1,23 @@
+---
+- name: Configure Jenkins Server.
+  hosts: all
+  sudo: True
+  pre_tasks:
+    - name: Update Server
+      raw: sudo apt-get update
+  
+  roles:
+    - geerlingguy.docker 
+    - mrlesmithjr.netdata
+    
+  tasks:
+    - name: Ensure group docker exists
+      group:
+        name: docker
+        state: present
+      
+    - name: Ensure ubuntu user are added to the docker group.
+      user:
+        name: ubuntu 
+        groups: docker
+        append: true

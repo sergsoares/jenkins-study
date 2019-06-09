@@ -11,7 +11,10 @@ aws.ec2-show-instances:
 
 aws.ec2-list-public-ips:
 	aws ec2 describe-instances --instance-ids $(JENKINS_STUDY) --query "Reservations[*].Instances[*].PublicIpAddress"  --output=text
-
+	
+aws.ec2-list-public-dns:
+	aws ec2 describe-instances --instance-ids $(JENKINS_STUDY) --query "Reservations[*].Instances[*].PublicDnsName"  --output=text
+	
 aws.start-instances:
 	aws ec2 start-instances --instance-ids $(JENKINS_STUDY)
 	

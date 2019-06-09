@@ -1,6 +1,6 @@
 ---
 - name: Configure Jenkins Server.
-  hosts: server
+  hosts: all
   sudo: True
   pre_tasks:
     - name: Update Server
@@ -8,7 +8,8 @@
   
   roles:
     - geerlingguy.docker 
-    - geerlingguy.jenkins 
+    - geerlingguy.jenkins
+    - geerlingguy.ruby
     - mrlesmithjr.netdata
     
   tasks:
